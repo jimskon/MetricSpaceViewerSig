@@ -5,6 +5,7 @@
  * Created on August 21, 2017, 10:33 AM
  */
 
+#define __STDC_LIMIT_MACROS
 #include <cstdlib> 
 #include <cstdint>
 #include <vector>
