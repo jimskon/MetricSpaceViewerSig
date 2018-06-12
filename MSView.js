@@ -234,10 +234,6 @@ function bigNodes(index,size) {
     nodeLayers[index].batchDraw();
 }
 
-function displaySig(sig) {
-	$('#sigOut').html(sig);
-}
-
 function addNode(xp,yp,color,myRadius,layer,sig) {
     var circle = new Kinetic.Circle({
 	x: xp,
@@ -261,7 +257,10 @@ function addNode(xp,yp,color,myRadius,layer,sig) {
 	updateGraphInfo();
     });
     circle.on('mouseover',function() {
-	 displaySig(sig);
+	 $('#sigOut').html("<"+sig+">");
+    });
+    circle.on('mouseout',function() {
+	 $('#sigOut').html("");
     });
     return circle;
 }
