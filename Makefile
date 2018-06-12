@@ -9,7 +9,7 @@ CC= g++
 #For Optimization
 #CFLAGS= -O2
 #For debugging
-CFLAGS= -std=c++11
+CFLAGS= -std=c++14
 
 RM= /bin/rm -f
 
