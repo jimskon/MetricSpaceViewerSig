@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Node.cpp
  * Author: skonjp
@@ -12,12 +6,14 @@
  */
 
 #include <cstdlib>
-#include <string>
-#include <iostream>
 #include <vector>
+#include <string>
+#include <algorithm>
+#include <sstream>
+#include <iterator>
+#include <iostream>
 #include <math.h> 
 #include <map>
-#include <algorithm>
 #include <limits>
 #include "Node.h"
 
@@ -40,6 +36,7 @@ Node::~Node() {
 void Node::display() {
 
     cout << " (" << p.GetX() << "," << p.GetY() << ") ";
+    cout << "Color: " << color << " ";
 
     if (neighbors.size() > 0) {
         cout << "Next:";
@@ -69,7 +66,7 @@ vector<int> Node::getNeighbors() {
 }
 
 void Node::clearDist() {
-  dist = 32000;
+    dist = INT_MAX;
 }
 
 void Node::setDist(int d) {
@@ -86,4 +83,46 @@ void Node::setColor(int c) {
 
 int Node::getColor() {
     return color;
+}
+
+// Converts a vector into a string.
+string Node::retreiveSig() {
+    std::ostringstream vss;
+    
+    if (!signature.empty()) {
+        // Convert all but the last element to avoid a trailing ","
+        std::copy(signature.begin(), signature.end()-1, std::ostream_iterator<int>(vss, ","));
+
+        // Now add the last element with no delimiter
+        vss << signature.back();
+    }
+    
+    return vss.str();
+}
+
+// Returns the signature of a node.
+vector<int> Node::getSig() {
+    return signature;
+}
+
+// Pass in the level that you are looking at and return the vector but with  
+// a new restricted size.
+vector<int> Node::resize(int l) {
+    signature.resize(l);
+    return signature;
+}
+
+// Adds a number to a signature of a node.
+void Node::pushSig(int v) {
+    signature.push_back(v);
+}
+
+// Copy the signature of a vector onto a node.
+void Node::copySig(vector<int> v) {
+    this->signature = v; 
+}
+
+// Return the size of the signature.
+int Node::size() {
+    return signature.size();
 }
