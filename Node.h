@@ -22,11 +22,8 @@ public:
 
     virtual ~Node();
 
-    vector<int> getSig();
-
     void display();
     void next(int i);
-
 
     Point getPoint();
     void xmlNodeXY();
@@ -39,6 +36,16 @@ public:
     
     void setColor(int c);
     int getColor();
+    
+    string retreiveSig();
+    
+    vector<int> getSig();
+    vector<int> resize(int l);
+    
+    void copySig(vector<int> v);
+    void pushSig(int v);
+    
+    int size();
 
 private:
 
