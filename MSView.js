@@ -234,7 +234,11 @@ function bigNodes(index,size) {
     nodeLayers[index].batchDraw();
 }
 
-function addNode(xp,yp,color,myRadius,layer) {
+function displaySig(sig) {
+	$('#sigOut').html(sig);
+}
+
+function addNode(xp,yp,color,myRadius,layer,sig) {
     var circle = new Kinetic.Circle({
 	x: xp,
 	y: yp,
@@ -256,6 +260,9 @@ function addNode(xp,yp,color,myRadius,layer) {
 	}
 	updateGraphInfo();
     });
+    circle.on('mouseover',function() {
+	 displaySig(sig);
+    }
     return circle;
 }
 
@@ -303,7 +310,7 @@ function processResults(resultXML) {
 	y=y*scale;
 	var color = parseInt($(this).find("c").text());
 	totalNodes++;
-	var node = addNode(x,y,colors[color],radius,color);
+	var node = addNode(x,y,colors[color],radius,color,sig);
 	colorsUsed = Math.max(colorsUsed,color);
 	nodes[color].push(node);
 //	console.log(color+":"+nodes[color].length);
