@@ -66,7 +66,6 @@ void Graph::xmlNodes() {
         int color = graph.at(i)->getColor();
         cout << color;
         cout << "</c>";
-        cout << "</n>";
         
         cout << "<s>";
         string signature = graph.at(i)->retreiveSig();
