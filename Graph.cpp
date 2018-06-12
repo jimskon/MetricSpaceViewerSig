@@ -1,7 +1,18 @@
-
-#include <vector>
-#include "Graph.h"
+#include <cstdlib>
 #include <string>
+#include <iostream>
+#include <vector>
+#include <iterator>
+#include <sstream>
+#include <math.h> 
+#include <map>
+#include <algorithm>
+#include <set>
+#include "Point.h"
+#include "Node.h"
+#include "Graph.h"
+
+
 
 Graph::Graph() {
 }
@@ -50,10 +61,17 @@ void Graph::xmlNodes() {
             cout  << graph.at(neighbors.at(i))->getPoint().GetX() << "," << graph.at(neighbors.at(i))->getPoint().GetY();
             cout << "</l>";
         }
+        
         cout << "<c>";
         int color = graph.at(i)->getColor();
         cout << color;
         cout << "</c>";
+        cout << "</n>";
+        
+        cout << "<s>";
+        string signature = graph.at(i)->retreiveSig();
+        cout << signature;
+        cout << "</s>";
         cout << "</n>";
     }
     cout << "</nodes>";
