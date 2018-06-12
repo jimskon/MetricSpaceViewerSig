@@ -296,6 +296,8 @@ function processResults(resultXML) {
     $('n',resultXML).each(function () {
 	var x = parseInt($(this).find("x").text())+10;
 	var y = parseInt($(this).find("y").text())+10;
+	var sig = $(this).find("s").text();
+	console.log(sig);
 	x=x*scale;
 	y=y*scale;
 	var color = parseInt($(this).find("c").text());
