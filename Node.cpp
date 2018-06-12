@@ -7,7 +7,7 @@
 
 #define __STDC_LIMIT_MACROS
 #include <cstdlib> 
-#include <cstdint>
+#include <cstdint.h>
 #include <vector>
 #include <string>
 #include <algorithm>
