@@ -32,15 +32,15 @@ genGraph: Node.o Point.o Graph.o genGraph.o
 
 
 PutHTML: MSView.js MSView.html MSView.css
-	cp MSViewK.html /var/www/html/research/MSSIG/$(USER)
-	cp MSViewK.js /var/www/html/research/MSSIG/$(USER)
-	cp MSView.html /var/www/html/research/MSSIG/$(USER)
-	cp MSView.js /var/www/html/research/MSSIG/$(USER)
-	cp MSView.css /var/www/html/research/MSSIG/$(USER)
-	cp gears.gif /var/www/html/research/MSSIG/$(USER)
+	cp MSViewK.html /var/www/html/research/$(USER)/MSSIG
+	cp MSViewK.js /var/www/html/research/$(USER)/MSSIG
+	cp MSView.html /var/www/html/research/$(USER)/MSSIG
+	cp MSView.js /var/www/html/research/$(USER)/MSSIG
+	cp MSView.css /var/www/html/research/$(USER)/MSSIG
+	cp gears.gif /var/www/html/research/$(USER)/MSSIG
 
 	echo "Current contents of your HTML directory: "
-	ls -l /var/www/html/research/MSSIG/$(USER)
+	ls -l /var/www/html/research/$(USER)/MSSIG
 
 PutCGI: genGraph
 	chmod 757 genGraph
