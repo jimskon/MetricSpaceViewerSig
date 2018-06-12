@@ -7,7 +7,7 @@
 
 #define __STDC_LIMIT_MACROS
 #include <cstdlib> 
-#include <cstdint.h>
+#include <cstdint>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -68,7 +68,7 @@ vector<int> Node::getNeighbors() {
 }
 
 void Node::clearDist() {
-    dist = INT_MAX;
+    dist = 32000;
 }
 
 void Node::setDist(int d) {
