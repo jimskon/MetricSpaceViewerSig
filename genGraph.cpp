@@ -135,32 +135,66 @@ Point computeP5(Point pStart, Point pEnd) {
 // Create nested levels between n1 and n2, pushing on g
 // return the graph index of first element in the group
 // If skipFirst is true, don't add first element (ni)
-void createGroup(Node *n1, Node *n6, int level, Graph *g, int &si, int &fi) {
-  \
-  if (level == 0) {
-    if (si < 0) {
-      si = g->add(n1);
+// Creates all of the nodes, links, and signatures.
+void createGroup(Node *n1, Node *n6, int level, int sigLen, Graph *g, int &si, int &fi) {    
+    // Links the nodes
+    if (level == 0) {  
+        if (si < 0) {
+            si = g->add(n1);
+        }
+        if (fi < 0) {
+            fi = g->add(n6);
+        }
+        g->addLink(si, fi);
+        return;
     }
-    if (fi < 0) {
-      fi = g->add(n6);
+    
+    // Creates four new nodes that are between the end points.
+    Node *n2 = new Node(computeP2(n1->getPoint(), n6->getPoint()));
+    Node *n3 = new Node(computeP3(n1->getPoint(), n6->getPoint()));
+    Node *n4 = new Node(computeP4(n1->getPoint(), n6->getPoint()));
+    Node *n5 = new Node(computeP5(n1->getPoint(), n6->getPoint()));
+    
+    // Creates the signature for the nodes.
+    vector<int> ts = n1->getSig();
+    
+    while (ts.size() >= sigLen) {
+        ts.pop_back();
     }
-
-    g->addLink(si,fi);
-    return;
-  }
-
-  Node *n2 = new Node(computeP2(n1->getPoint(),n6->getPoint()));
-  Node *n3 = new Node(computeP3(n1->getPoint(),n6->getPoint()));
-  Node *n4 = new Node(computeP4(n1->getPoint(),n6->getPoint()));
-  Node *n5 = new Node(computeP5(n1->getPoint(),n6->getPoint()));
-  int b=-1, c=-1, d=-1, e=-1;
-  createGroup(n1,n2,level-1,g,si,b);
-  createGroup(n2,n3,level-1,g,b,c);
-  createGroup(n2,n4,level-1,g,b,d);
-  createGroup(n3,n5,level-1,g,c,e);
-  createGroup(n4,n5,level-1,g,d,e);
-  createGroup(n5,n6,level-1,g,e,fi);
-
+    
+    if (n6->getSig().back() == -2) {
+        ts.pop_back();
+        ts.push_back(-1);
+    }
+    
+    if (n1->size() < sigLen) {
+        n1->pushSig(0);
+    }
+        
+    if (n6->size() < sigLen) {
+        n6->pushSig(0);
+    }
+        
+    n2->copySig(ts);
+    n3->copySig(ts);
+    n4->copySig(ts);
+    n5->copySig(ts);
+    
+    n2->pushSig(1);
+    n3->pushSig(2);
+    n4->pushSig(-2);
+    n5->pushSig(3);
+    
+    int b = -1, c = -1, d = -1, e = -1;
+    
+    // Repeat the process until all nodes are accounted for.
+    createGroup(n1, n2, level - 1, sigLen+1, g, si, b);
+    createGroup(n2, n3, level - 1, sigLen+1, g, b, c);
+    createGroup(n2, n4, level - 1, sigLen+1, g, b, d);
+    createGroup(n3, n5, level - 1, sigLen+1, g, c, e);
+    createGroup(n4, n5, level - 1, sigLen+1, g, d, e);
+    createGroup(n5, n6, level - 1, sigLen+1, g, e, fi);
+    
 }
 
 void createMetricSpace(Node *n1, Node *n2,int l, Graph *g) {
@@ -174,7 +208,13 @@ void createMetricSpace(Node *n1, Node *n2,int l, Graph *g) {
   // point first to the first point in created group
   int si=-1;
   int fi=-1;
-  createGroup(n1,n2,l-1,g, si, fi);
+  
+  // Push Initial Signatures
+  n1->pushSig(0);
+  n2->pushSig(1);
+  
+  //createGroup(n1,n2,l-1,g, si, fi);
+  createGroup(n1, n2, l - 1, 2, g, si, fi);
 
   // Color nodes that are maximal ball centers
   /*  for (int i=0 ; i<g->size(); i++) {
