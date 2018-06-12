@@ -32,19 +32,19 @@ genGraph: Node.o Point.o Graph.o genGraph.o
 
 
 PutHTML: MSView.js MSView.html MSView.css
-	cp MSViewK.html /var/www/html/research/$(USER)
-	cp MSViewK.js /var/www/html/research/$(USER)
-	cp MSView.html /var/www/html/research/$(USER)
-	cp MSView.js /var/www/html/research/$(USER)
-	cp MSView.css /var/www/html/research/$(USER)
-	cp gears.gif /var/www/html/research/$(USER)
+	cp MSViewK.html /var/www/html/research/MSSIG/$(USER)
+	cp MSViewK.js /var/www/html/research/MSSIG/$(USER)
+	cp MSView.html /var/www/html/research/MSSIG/$(USER)
+	cp MSView.js /var/www/html/research/MSSIG/$(USER)
+	cp MSView.css /var/www/html/research/MSSIG/$(USER)
+	cp gears.gif /var/www/html/research/MSSIG/$(USER)
 
 	echo "Current contents of your HTML directory: "
-	ls -l /var/www/html/research/$(USER)
+	ls -l /var/www/html/research/MSSIG/$(USER)
 
 PutCGI: genGraph
 	chmod 757 genGraph
-	cp genGraph /usr/lib/cgi-bin/$(USER)_genGraph.cgi
+	cp genGraph /usr/lib/cgi-bin/$(USER)_genGraphSig.cgi
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
