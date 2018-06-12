@@ -281,6 +281,7 @@ function callProcessResults(resultXML) {
     processResults(resultXML);
 }
 function processResults(resultXML) {
+    console.log(resultXML);
     var output = "";
     totalNodes=0;
     colorsUsed=0;
