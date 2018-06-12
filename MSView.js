@@ -262,7 +262,7 @@ function addNode(xp,yp,color,myRadius,layer,sig) {
     });
     circle.on('mouseover',function() {
 	 displaySig(sig);
-    }
+    });
     return circle;
 }
 
