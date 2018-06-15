@@ -161,6 +161,16 @@ void createGroup(Node *n1, Node *n6, int level, int sigLen, Graph *g, int &si, i
     while (ts.size() >= sigLen) {
         ts.pop_back();
     }
+  
+    // Assigns (-1) to the point in the signature that should be going down.
+    int j=0;
+    while(j < ts.size()) {
+        if ( (n6->getSig().at(j) < 0 && ts.at(j) > 0)) {
+            ts.at(j) = -1;
+            break;
+        } 
+        j++;   
+    }
     
     if (n6->getSig().back() == -2) {
         ts.pop_back();
