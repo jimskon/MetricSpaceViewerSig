@@ -44,7 +44,7 @@ PutHTML: MSView.js MSView.html MSView.css
 
 PutCGI: genGraph
 	chmod 757 genGraph
-	cp genGraph /usr/lib/cgi-bin/$(USER)_genGraphSig.cgi
+	cp genGraph /usr/lib/cgi-bin/$(USER)_genGraphSig3.cgi
 
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
