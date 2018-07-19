@@ -249,7 +249,7 @@ function addNode(xp,yp,color,myRadius,layer,sig) {
 	strokeWidth: 1,
 	draggable: false
     });
-	console.log(color+":"+layer+":"+sig);
+	//console.log(color+":"+layer+":"+sig);
     nodeLayers[layer].add(circle);
     circle.index=layer;
     circle.on('click', function() {
@@ -292,7 +292,7 @@ function callProcessResults(resultXML) {
     processResults(resultXML);
 }
 function processResults(resultXML) {
-    console.log(resultXML);
+    //console.log(resultXML);
     var output = "";
     totalNodes=0;
     colorsUsed=0;
@@ -309,7 +309,7 @@ function processResults(resultXML) {
 	var x = parseInt($(this).find("x").text())+10;
 	var y = parseInt($(this).find("y").text())+10;
 	var sig = $(this).find("s").text();
-	console.log(sig);
+	//console.log(sig);
 	x=x*scale;
 	y=y*scale;
 	var color = parseInt($(this).find("c").text());
