@@ -30,6 +30,7 @@ using namespace std;
 using namespace cgicc; // Needed for AJAX functions.
 
 void buildGraph(Graph *g, bool p, int s, int e, int level, int l);
+void buildLevel3(Graph *g, bool p, int s, int e);
 
 static int DIVIDEFACTOR = 4;
 
