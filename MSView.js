@@ -23,6 +23,7 @@ var colors = ["#e6194b","#3cb44b","#ffe119","#0082c8","#f58231","#911eb4","#46f0
 	      "#FFFFFF","#000000","#00194b","#00b44b","#00e119","#ff82c8","#008231","#001eb4","#fff0f0","#0032e6",
 	      "#00f53c","#00bebe","#ff8080","#00beff","#00fac8","#ff0000","#00ffc3","#ff8000","#00d8b1",
 	      "#fff080","#00FFFF","#990000"];
+var nColors=colors.length;
 var scaling = false;
 
 $(document).ready(function () {
@@ -93,7 +94,7 @@ function clearResults() {
     clearNodes();
 }
 function clearNodes() {
-    for (i=0;i<=32;i++) {
+    for (i=0;i<=nColors;i++) {
 	nodeLayers[i].removeChildren();
 	nodeLayers[i].draw();
 	nodes[i]=new Array(0);
@@ -101,19 +102,19 @@ function clearNodes() {
     }
 }
 function drawNodes() {
-    for (i=0;i<=32;i++) {
+    for (i=0;i<=nColors;i++) {
 	nodeLayers[i].draw();
     }
 }
 
 function showNodes() {
-    for (i=0;i<=32;i++) {
+    for (i=0;i<=nColors;i++) {
 	nodeLayers[i].show();
     }
 }
 
 function hideNodes() {
-    for (i=0;i<=32;i++) {
+    for (i=0;i<=nColors;i++) {
 	nodeLayers[i].hide();
     }
 }
@@ -210,7 +211,7 @@ function createGraphArea() {
     linesLayer = new Kinetic.Layer();
     nodeLayer = new Kinetic.Layer();
     nodes = new Array(0);
-    for (i=0;i<=32;i++) {
+    for (i=0;i<=nColors;i++) {
 	nodeLayers[i] = new Kinetic.Layer();
 	stage.add(nodeLayers[i]);
 	nodes[i]=new Array(0);
