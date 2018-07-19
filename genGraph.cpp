@@ -29,6 +29,8 @@
 using namespace std;
 using namespace cgicc; // Needed for AJAX functions.
 
+void buildGraph(Graph *g, bool p, int s, int e, int level, int l);
+
 static int DIVIDEFACTOR = 4;
 
 ofstream logFile;
@@ -37,17 +39,6 @@ void genNodes(int l);
 void colorAllNodes(Graph *g, int maxDist);
   
 
-void genNodes(int level) {
-    Graph *g = new Graph();
-    
-    buildInitialGraph(g, level);
-    
-    if (level >= 1) {
-       g->xmlNodes(); 
-    }
-  
-
-}
 
 Point computeP2(Point pStart, Point pEnd) {
   int x = (3 * pStart.GetX() + pEnd.GetX()) / DIVIDEFACTOR;
@@ -528,6 +519,15 @@ void buildLevel3(Graph *g, bool p, int s, int e) {
 
 }
 
+void genNodes(int level) {
+    Graph *g = new Graph();
+    
+    buildInitialGraph(g, level);
+    
+    if (level >= 1) {
+       g->xmlNodes(); 
+    }
+}
 int main() {
   Cgicc cgi;    // Ajax object
 
