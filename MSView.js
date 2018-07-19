@@ -340,9 +340,9 @@ function processResults(resultXML) {
 function genPoints(){
     $('#points').empty();
     savedXML="";
-    if ($('#levels').val()>6) {
-	$('#levels').val(6);
-    }
+    //if ($('#levels').val()>6) {
+	//$('#levels').val(6);
+    //}
     $.ajax({
 	url: '/cgi-bin/skon_genGraphSig.cgi?levels='+$('#levels').val(),
 	dataType: 'text',
