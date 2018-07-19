@@ -3,7 +3,7 @@
 
 # Put your user name below:
 USER= skon
-DIR= MSSIG
+DIR= MSSIG3
 
 CC= g++
 
