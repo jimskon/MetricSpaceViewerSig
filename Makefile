@@ -3,6 +3,7 @@
 
 # Put your user name below:
 USER= skon
+DIR= MSSIG
 
 CC= g++
 
@@ -32,15 +33,15 @@ genGraph: Node.o Point.o Graph.o genGraph.o
 
 
 PutHTML: MSView.js MSView.html MSView.css
-	cp MSViewK.html /var/www/html/research/$(USER)/MSSIG
-	cp MSViewK.js /var/www/html/research/$(USER)/MSSIG
-	cp MSView.html /var/www/html/research/$(USER)/MSSIG
-	cp MSView.js /var/www/html/research/$(USER)/MSSIG
-	cp MSView.css /var/www/html/research/$(USER)/MSSIG
-	cp gears.gif /var/www/html/research/$(USER)/MSSIG
+	cp MSViewK.html /var/www/html/research/$(USER)/$(DIR)
+	cp MSViewK.js /var/www/html/research/$(USER)/$(DIR)
+	cp MSView.html /var/www/html/research/$(USER)/$(DIR)
+	cp MSView.js /var/www/html/research/$(USER)/$(DIR)
+	cp MSView.css /var/www/html/research/$(USER)/$(DIR)
+	cp gears.gif /var/www/html/research/$(USER)/$(DIR)
 
 	echo "Current contents of your HTML directory: "
-	ls -l /var/www/html/research/$(USER)/MSSIG
+	ls -l /var/www/html/research/$(USER)/$(DIR)
 
 PutCGI: genGraph
 	chmod 757 genGraph
