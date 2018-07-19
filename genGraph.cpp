@@ -536,6 +536,7 @@ int main() {
   form_iterator levelIt = cgi.getElement("levels");
   string level = **levelIt;
   int ilevel = atoi(level.c_str());
+  if (ilevel<1) ilevel=4;
 
   // Debug to file example
   logFile.open("/tmp/skon.log",ios::out | ios::app);
