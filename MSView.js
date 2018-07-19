@@ -344,7 +344,7 @@ function genPoints(){
 	//$('#levels').val(6);
     //}
     $.ajax({
-	url: '/cgi-bin/skon_genGraphSig.cgi?levels='+$('#levels').val(),
+	url: '/cgi-bin/skon_genGraphSig3.cgi?levels='+$('#levels').val(),
 	dataType: 'text',
 	success: callProcessResults,
 	error: function(){alert("Error: Something went wrong");}
