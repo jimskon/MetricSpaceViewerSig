@@ -36,27 +36,6 @@ void createMetricSpace(Node *n1, Node *n2,int l, Graph *g);
 void genNodes(int l);
 void colorAllNodes(Graph *g, int maxDist);
   
-int main() {
-  Cgicc cgi;    // Ajax object
-
-  // Create AJAX objects to recieve information from web page.
-  form_iterator levelIt = cgi.getElement("levels");
-  string level = **levelIt;
-  int ilevel = atoi(level.c_str());
-
-  // Debug to file example
-  logFile.open("/tmp/skon.log",ios::out | ios::app);
-  logFile << "Got: " <<  "levels:" << ":" << ilevel << endl;
-  logFile.close();
-
-
-  // output required message for AJAX
-  cout << "Content-Type: text/plain\n\n";
-  //cout << "Hello world!! << ilevel:" << ilevel;
-  genNodes(ilevel);
-}
-
-
 
 void genNodes(int level) {
     Graph *g = new Graph();
@@ -549,3 +528,22 @@ void buildLevel3(Graph *g, bool p, int s, int e) {
 
 }
 
+int main() {
+  Cgicc cgi;    // Ajax object
+
+  // Create AJAX objects to recieve information from web page.
+  form_iterator levelIt = cgi.getElement("levels");
+  string level = **levelIt;
+  int ilevel = atoi(level.c_str());
+
+  // Debug to file example
+  logFile.open("/tmp/skon.log",ios::out | ios::app);
+  logFile << "Got: " <<  "levels:" << ":" << ilevel << endl;
+  logFile.close();
+
+
+  // output required message for AJAX
+  cout << "Content-Type: text/plain\n\n";
+  //cout << "Hello world!! << ilevel:" << ilevel;
+  genNodes(ilevel);
+}
