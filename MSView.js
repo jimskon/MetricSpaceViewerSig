@@ -248,7 +248,7 @@ function addNode(xp,yp,color,myRadius,layer,sig) {
 	strokeWidth: 1,
 	draggable: false
     });
-
+	console.log(color+":"+layer+":"+sig);
     nodeLayers[layer].add(circle);
     circle.index=layer;
     circle.on('click', function() {
