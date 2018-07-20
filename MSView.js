@@ -292,7 +292,7 @@ function callProcessResults(resultData) {
     processResults(resultData);
 }
 function processResults(resultData) {
-    console.log(resultData);
+    //console.log(resultData);
     var output = "";
     totalNodes=0;
     colorsUsed=0;
@@ -304,6 +304,15 @@ function processResults(resultData) {
     //radius = 7-levels;
     //var radius = 5;
     var pointColor = "Black";
+    var s=0;
+    var e=0;
+    e=str.indexOf("\n",s);
+    while (s < resultData.length) {
+	next = str.substring(s,e-1);
+	console.log("Line:"+next);
+	s=e+1;
+	e=str.indexOf("\n",s);
+    }		
 
     /*
     $(resultXML).find('n').each(function () {
