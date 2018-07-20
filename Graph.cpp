@@ -78,9 +78,8 @@ void Graph::CSVData() {
         cout << "(";
         string signature = graph.at(i)->listToString();
         cout << signature;
-        cout << ")";        
+        cout << ")" << endl;    
     }
-    cout << endl;
 }
 
 void Graph::xmlNodes() {
