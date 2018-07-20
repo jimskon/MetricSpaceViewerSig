@@ -526,7 +526,7 @@ void genNodes(int level) {
     buildInitialGraph(g, level);
     
     if (level >= 1) {
-       g->xmlNodes(); 
+       g->CSVData(); 
     }
 }
 int main() {
