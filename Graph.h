@@ -26,6 +26,7 @@ public:
     Node *at(int i);
     void display();
     void xmlNodes();
+    void CSVData();
 private:
     vector<Node*> graph;
 
