@@ -67,18 +67,16 @@ void Graph::CSVData() {
         // mentioned node.
         vector<int> neighbors = graph.at(i)->getNeighbors();
         int l = neighbors.size();
-        cout << "(";
         for (int i=0; i<l; i++){
             cout  << graph.at(neighbors.at(i))->getPoint().GetX() << "," << graph.at(neighbors.at(i))->getPoint().GetY();
             if (i+1<l) cout << ",";
         }
-        cout << "):";
+        cout << ":";
                 
         // Displays the signature of each node.
-        cout << "(";
         string signature = graph.at(i)->listToString();
         cout << signature;
-        cout << ")" << endl;    
+        cout << endl;    
     }
 }
 
