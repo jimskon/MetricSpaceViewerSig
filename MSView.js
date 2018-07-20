@@ -287,12 +287,12 @@ function randomColor() {
     return ('#'+Math.floor(Math.random()*16777215).toString(16));
 }
 
-function callProcessResults(resultXML) {
-    savedXML=resultXML;
-    processResults(resultXML);
+function callProcessResults(resultData) {
+    savedData=resultData;
+    processResults(resultData);
 }
-function processResults(resultXML) {
-    //console.log(resultXML);
+function processResults(resultData) {
+    console.log(resultData);
     var output = "";
     totalNodes=0;
     colorsUsed=0;
@@ -305,6 +305,7 @@ function processResults(resultXML) {
     //var radius = 5;
     var pointColor = "Black";
 
+    /*
     $(resultXML).find('n').each(function () {
     //$('n',resultXML).each(function () {
 	var x = parseInt($(this).find("x").text())+10;
@@ -337,6 +338,7 @@ function processResults(resultXML) {
     drawNodes();
     updateGraphInfo();
     $('#points').html(output+"<br />Total:"+count);
+    */
 }
 
 function genPoints(){
