@@ -330,7 +330,7 @@ function processResults(resultData) {
 
 	output+="["+count+"] x:"+x+" y:"+y;
 	var links = data[3].split(",");
-	for (i=0; i<links.size(); i+=2) {
+	for (i=0; i<links.length; i+=2) {
 	    addLine(x,y,(parseInt(links[i])+10)*scale,(parseInt(links[i+1])+10)*scale,linesLayer);
 	    output+=" "+links[i]*scale+ "," + links[i+1]*scale;
 	}
