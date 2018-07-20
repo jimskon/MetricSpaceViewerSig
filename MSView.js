@@ -306,12 +306,12 @@ function processResults(resultData) {
     var pointColor = "Black";
     var s=0;
     var e=0;
-    e=str.indexOf("\n",s);
+    e=resultData.indexOf("\n",s);
     while (s < resultData.length) {
-	next = str.substring(s,e-1);
+	next = resultData.substring(s,e-1);
 	console.log("Line:"+next);
 	s=e+1;
-	e=str.indexOf("\n",s);
+	e=resultData.indexOf("\n",s);
     }		
 
     /*
