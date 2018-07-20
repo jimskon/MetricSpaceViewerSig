@@ -49,6 +49,40 @@ void Graph::display() {
     }
 }
 
+// Output node daya in CSV form:
+// x:y:color:neighbors(csv),signature(csv)
+void Graph::CSVData() {
+    int length = graph.size();
+    for (int i = 0; i < length; i++) {
+          
+        // Gets the (x , y) coordinates of each node.
+        Point p=graph.at(i)->getPoint();
+        cout << p.GetX() << ":" << p.GetY() << ":";
+       
+        // Displays the color of each node.      
+        int color = graph.at(i)->getColor();
+        cout << color << ":";
+          
+        // Gets the (x , y) coordinates of the nodes surrounding the previously
+        // mentioned node.
+        vector<int> neighbors = graph.at(i)->getNeighbors();
+        int l = neighbors.size();
+        cout << "(";
+        for (int i=0; i<l; i++){
+            cout  << graph.at(neighbors.at(i))->getPoint().GetX() << "," << graph.at(neighbors.at(i))->getPoint().GetY();
+            if (i+1<l) cout << ",";
+        }
+        cout << "):";
+                
+        // Displays the signature of each node.
+        cout << "(";
+        string signature = graph.at(i)->listToString();
+        cout << signature;
+        cout << ")";        
+    }
+    cout << endl;
+}
+
 void Graph::xmlNodes() {
     int length = graph.size();
     cout << "<nodes>";
