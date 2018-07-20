@@ -305,7 +305,7 @@ function processResults(resultXML) {
     //var radius = 5;
     var pointColor = "Black";
 
-    resultXML.find('n').each(function () {
+    $(resultXML).find('n').each(function () {
     //$('n',resultXML).each(function () {
 	var x = parseInt($(this).find("x").text())+10;
 	var y = parseInt($(this).find("y").text())+10;
