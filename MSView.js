@@ -344,7 +344,6 @@ function processResults(resultData) {
     drawNodes();
     updateGraphInfo();
     $('#points').html(output+"<br />Total:"+count);
-    */
 }
 
 function genPoints(){
