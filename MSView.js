@@ -309,7 +309,7 @@ function processResults(resultData) {
     e=resultData.indexOf("\n",s);
     while (s < resultData.length) {
 	line = resultData.substring(s,e);
-	console.log("Line:"+line);
+	//console.log("Line:"+line);
 	s=e+1;
 	e=resultData.indexOf("\n",s);
 	
