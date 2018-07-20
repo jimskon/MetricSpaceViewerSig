@@ -308,22 +308,19 @@ function processResults(resultData) {
     var e=0;
     e=resultData.indexOf("\n",s);
     while (s < resultData.length) {
-	next = resultData.substring(s,e-1);
-	console.log("Line:"+next);
+	line = resultData.substring(s,e);
+	console.log("Line:"+line);
 	s=e+1;
 	e=resultData.indexOf("\n",s);
-    }		
-
-    /*
-    $(resultXML).find('n').each(function () {
-    //$('n',resultXML).each(function () {
-	var x = parseInt($(this).find("x").text())+10;
-	var y = parseInt($(this).find("y").text())+10;
-	var sig = $(this).find("s").text();
+	
+	var data = line.split(":");
+	var x = parseInt(data[0])+10;
+	var y = parseInt(data[1])+10;
+	var color = parseInt(data[2]);
+	var sig = data[4];
 	//console.log(sig);
 	x=x*scale;
 	y=y*scale;
-	var color = parseInt($(this).find("c").text());
 	totalNodes++;
 	var node = addNode(x,y,colors[color],radius,color,sig);
 	colorsUsed = Math.max(colorsUsed,color);
@@ -332,15 +329,15 @@ function processResults(resultData) {
 	addText(color,x+10,y-10,indexLayer);
 
 	output+="["+count+"] x:"+x+" y:"+y;
-	$('l',$(this)).each(function () {
-	    var xy = $(this).text().split(",");
-	    addLine(x,y,(parseInt(xy[0])+10)*scale,(parseInt(xy[1])+10)*scale,linesLayer);
-	    output+=" "+xy[0]*scale+ "," + xy[1]*scale;
-	});
+	var links = data[3].split(",");
+	for (i=0; i<links.size(); i+=2) {
+	    addLine(x,y,(parseInt(links[i])+10)*scale,(parseInt(links[i+1])+10)*scale,linesLayer);
+	    output+=" "+links[i]*scale+ "," + links[i+1]*scale;
+	}
 
 	output+="<br />";
 	count++;
-    });
+    }
     stage.add(layer);
     stage.add(linesLayer);
     stage.add(indexLayer);
